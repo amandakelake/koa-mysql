@@ -1,5 +1,18 @@
+const UserModel = require('../models/user');
+
 class User {
     static async create(ctx) {
+        const {
+            username,
+            password,
+            email
+        } = ctx.request.body;
+        const user = {
+            username: username,
+            password: password,
+            email: email
+        };
+        await UserModel.create(user);
         ctx.response.status = 200;
         ctx.body = {
             code: 200,
@@ -8,36 +21,16 @@ class User {
         }
     }
     static async login(ctx) {
-        ctx.response.status = 200;
-        ctx.body = {
-            code: 200,
-            message: `登录成功`,
-            data: {}
-        }
+
     }
     static async delete(ctx) {
-        ctx.response.status = 200;
-        ctx.body = {
-            code: 200,
-            message: `删除成功`,
-            data: {}
-        }
+
     }
     static async info(ctx) {
-        ctx.response.status = 200;
-        ctx.body = {
-            code: 200,
-            message: `用户信息`,
-            data: {}
-        }
+
     }
     static async list(ctx) {
-        ctx.response.status = 200;
-        ctx.body = {
-            code: 200,
-            message: `用户列表`,
-            data: {}
-        }
+
     }
 }
 
